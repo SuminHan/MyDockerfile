@@ -1,0 +1,87 @@
+Sending build context to Docker daemon 3.072 kB
+Step 1 : FROM ubuntu:14.04
+ ---> 4a2820e686c4
+Step 2 : LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
+ ---> Running in 20a18dde2499
+ ---> 51a256e6556f
+Removing intermediate container 20a18dde2499
+Step 3 : LABEL com.nvidia.volumes.needed "nvidia_driver"
+ ---> Running in 725caa0f9bf8
+ ---> 3d30d8482fdd
+Removing intermediate container 725caa0f9bf8
+Step 4 : RUN apt-get update && apt-get install -y --no-install-recommends         ocl-icd-libopencl1         clinfo &&     rm -rf /var/lib/apt/lists/*
+ ---> Running in 4c1482b5694d
+Ign http://archive.ubuntu.com trusty InRelease
+Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
+Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
+Get:3 http://archive.ubuntu.com trusty Release.gpg [933 B]
+Get:4 http://archive.ubuntu.com trusty Release [58.5 kB]
+Get:5 http://archive.ubuntu.com trusty-updates/main Sources [494 kB]
+Get:6 http://archive.ubuntu.com trusty-updates/restricted Sources [6470 B]
+Get:7 http://archive.ubuntu.com trusty-updates/universe Sources [234 kB]
+Get:8 http://archive.ubuntu.com trusty-updates/main amd64 Packages [1245 kB]
+Get:9 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [21.2 kB]
+Get:10 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [540 kB]
+Get:11 http://archive.ubuntu.com trusty-security/main Sources [169 kB]
+Get:12 http://archive.ubuntu.com trusty-security/restricted Sources [5068 B]
+Get:13 http://archive.ubuntu.com trusty-security/universe Sources [71.2 kB]
+Get:14 http://archive.ubuntu.com trusty-security/main amd64 Packages [781 kB]
+Get:15 http://archive.ubuntu.com trusty-security/restricted amd64 Packages [17.9 kB]
+Get:16 http://archive.ubuntu.com trusty-security/universe amd64 Packages [221 kB]
+Get:17 http://archive.ubuntu.com trusty/main Sources [1335 kB]
+Get:18 http://archive.ubuntu.com trusty/restricted Sources [5335 B]
+Get:19 http://archive.ubuntu.com trusty/universe Sources [7926 kB]
+Get:20 http://archive.ubuntu.com trusty/main amd64 Packages [1743 kB]
+Get:21 http://archive.ubuntu.com trusty/restricted amd64 Packages [16.0 kB]
+Get:22 http://archive.ubuntu.com trusty/universe amd64 Packages [7589 kB]
+Fetched 22.6 MB in 19s (1133 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  opencl-icd
+The following NEW packages will be installed:
+  clinfo ocl-icd-libopencl1
+0 upgraded, 2 newly installed, 0 to remove and 2 not upgraded.
+Need to get 44.2 kB of archives.
+After this operation, 200 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe ocl-icd-libopencl1 amd64 2.1.3-4 [28.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty/universe clinfo amd64 0.0.20130513-1 [16.1 kB]
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m[91mdpkg-preconfigure: unable to re-open stdin: 
+[0mFetched 44.2 kB in 1s (33.7 kB/s)
+Selecting previously unselected package ocl-icd-libopencl1:amd64.
+(Reading database ... 11569 files and directories currently installed.)
+Preparing to unpack .../ocl-icd-libopencl1_2.1.3-4_amd64.deb ...
+Unpacking ocl-icd-libopencl1:amd64 (2.1.3-4) ...
+Selecting previously unselected package clinfo.
+Preparing to unpack .../clinfo_0.0.20130513-1_amd64.deb ...
+Unpacking clinfo (0.0.20130513-1) ...
+Setting up ocl-icd-libopencl1:amd64 (2.1.3-4) ...
+Setting up clinfo (0.0.20130513-1) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.13) ...
+ ---> 8464a1999a3d
+Removing intermediate container 4c1482b5694d
+Step 5 : RUN mkdir -p /etc/OpenCL/vendors &&     echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+ ---> Running in c7bff8e100ae
+ ---> 16b0d5c64fb7
+Removing intermediate container c7bff8e100ae
+Step 6 : RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf &&     echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+ ---> Running in 184e58ac1eed
+ ---> 427ba6c225e1
+Removing intermediate container 184e58ac1eed
+Step 7 : ENV PATH /usr/local/nvidia/bin:${PATH}
+ ---> Running in b57a20a2e2ba
+ ---> 03a5a31458c9
+Removing intermediate container b57a20a2e2ba
+Step 8 : ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+ ---> Running in 992b2708afe1
+ ---> 852efbfef8da
+Removing intermediate container 992b2708afe1
+Successfully built 852efbfef8da

@@ -1,0 +1,24 @@
+FROM ubuntu:14.04
+LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
+ 
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+ 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ocl-icd-libopencl1 \
+        clinfo && \
+    rm -rf /var/lib/apt/lists/*
+ 
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+ 
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+ 
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+ 
+RUN apt update
+RUN apt install openmpi-bin openssh-server openssh-client -y
+RUN ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
+RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+RUN echo "StrictHostKeyChecking no" >> ~/.ssh/config

@@ -1,0 +1,111 @@
+8 templated_functions
+# Name Calls Subrs Excl Incl ProfileCalls
+".TAU application " 1 1 40 224528 0 GROUP="TAU_USER"
+"int main(int, char **) C [{simpson-mpicl.c} {18,1}-{234,1}]  " 1 5 173617 224488 0 GROUP="TAU_DEFAULT"
+"MPI_Init()  " 1 0 31905 31905 0 GROUP="MPI"
+"MPI_Comm_size()  " 1 0 1 1 0 GROUP="MPI"
+"MPI_Comm_rank()  " 1 0 1 1 0 GROUP="MPI"
+"MPI_Recv()  " 0 0 0 0 0 GROUP="MPI"
+"MPI_Finalize()  " 1 0 18940 18940 0 GROUP="MPI"
+"MPI_Send()  " 1 0 24 24 0 GROUP="MPI"
+0 aggregates
+98 userevents
+# eventname numevents max min mean sumsqr
+".TAU <unknown event>" 0 0 0 0 0
+"TauTraceClockOffsetStart" 0 0 0 0 0
+"Message size received from all nodes" 0 0 0 0 0
+"TauTraceClockOffsetEnd" 0 0 0 0 0
+"CPU Cores | 4" 0 0 0 0 0
+"CPU MHz | 2117.296" 0 0 0 0 0
+"CPU Type | Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz" 0 0 0 0 0
+"CPU Vendor | GenuineIntel" 0 0 0 0 0
+"CWD | /dockerdata/examples/simpson" 0 0 0 0 0
+"Cache Size | 8192 KB" 0 0 0 0 0
+"Command Line | a.out" 0 0 0 0 0
+"Executable | /dockerdata/examples/simpson/a.out" 0 0 0 0 0
+"Hostname | localhost.localdomain" 0 0 0 0 0
+"Local Time | 2017-06-30T16:59:10+09:00" 0 0 0 0 0
+"MPI Processor Name | localhost.localdomain" 0 0 0 0 0
+"Memory Size | 7971896 kB" 0 0 0 0 0
+"Node Name | localhost.localdomain" 0 0 0 0 0
+"OMP_CHUNK_SIZE | 1" 0 0 0 0 0
+"OMP_DYNAMIC | off" 0 0 0 0 0
+"OMP_MAX_THREADS | 8" 0 0 0 0 0
+"OMP_NESTED | off" 0 0 0 0 0
+"OMP_NUM_PROCS | 8" 0 0 0 0 0
+"OMP_SCHEDULE | UNKNOWN" 0 0 0 0 0
+"OS Machine | x86_64" 0 0 0 0 0
+"OS Name | Linux" 0 0 0 0 0
+"OS Release | 3.10.0-514.21.2.el7.x86_64" 0 0 0 0 0
+"OS Version | #1 SMP Tue Jun 20 12:24:47 UTC 2017" 0 0 0 0 0
+"Starting Timestamp | 1498809550026849" 0 0 0 0 0
+"TAU Architecture | default" 0 0 0 0 0
+"TAU Config |  -c++=mpiCC -cc=mpicc -mpi -MPITRACE -slog2 -PROFILE -TRACE -openmp -pdt=/root/tau_install/pdtoolkit-3.24 -mpiinc=/usr/local/include -mpilib=/usr/local/lib -opencl=/usr/" 0 0 0 0 0
+"TAU Makefile | /root/tau_install/tau-2.26.2p1/x86_64/lib/Makefile.tau-mpi-pdt-openmp-profile-trace-mpitrace" 0 0 0 0 0
+"TAU MetaData Merge Time | 5.8E-05 seconds" 0 0 0 0 0
+"TAU Version | 2.26.2p1" 0 0 0 0 0
+"TAU_BFD_LOOKUP | on" 0 0 0 0 0
+"TAU_CALLPATH_DEPTH | 2" 0 0 0 0 0
+"TAU_CALLSITE_DEPTH | 1" 0 0 0 0 0
+"TAU_COMM_MATRIX | off" 0 0 0 0 0
+"TAU_CUDA_BINARY_EXE | " 0 0 0 0 0
+"TAU_CUPTI_API | runtime" 0 0 0 0 0
+"TAU_EBS_KEEP_UNRESOLVED_ADDR | off" 0 0 0 0 0
+"TAU_IBM_BG_HWP_COUNTERS | off" 0 0 0 0 0
+"TAU_MAX_THREADS | 128" 0 0 0 0 0
+"TAU_MEASURE_TAU | off" 0 0 0 0 0
+"TAU_MEMDBG_PROTECT_ABOVE | off" 0 0 0 0 0
+"TAU_MEMDBG_PROTECT_BELOW | off" 0 0 0 0 0
+"TAU_MEMDBG_PROTECT_FREE | off" 0 0 0 0 0
+"TAU_OPENMP_RUNTIME | on" 0 0 0 0 0
+"TAU_OPENMP_RUNTIME_EVENTS | on" 0 0 0 0 0
+"TAU_OPENMP_RUNTIME_STATES | off" 0 0 0 0 0
+"TAU_OUTPUT_CUDA_CSV | off" 0 0 0 0 0
+"TAU_PAPI_MULTIPLEXING | off" 0 0 0 0 0
+"TAU_PROFILE | off" 0 0 0 0 0
+"TAU_PROFILE_FORMAT | profile" 0 0 0 0 0
+"TAU_SAMPLING | off" 0 0 0 0 0
+"TAU_SHOW_MEMORY_FUNCTIONS | off" 0 0 0 0 0
+"TAU_SIGNALS_GDB | off" 0 0 0 0 0
+"TAU_SOS | on" 0 0 0 0 0
+"TAU_SYNCHRONIZE_CLOCKS | on" 0 0 0 0 0
+"TAU_THROTTLE | on" 0 0 0 0 0
+"TAU_THROTTLE_NUMCALLS | 100000" 0 0 0 0 0
+"TAU_THROTTLE_PERCALL | 10" 0 0 0 0 0
+"TAU_TRACE | on" 0 0 0 0 0
+"TAU_TRACK_CUDA_CDP | off" 0 0 0 0 0
+"TAU_TRACK_CUDA_INSTRUCTIONS | " 0 0 0 0 0
+"TAU_TRACK_CUDA_SASS | off" 0 0 0 0 0
+"TAU_TRACK_HEADROOM | off" 0 0 0 0 0
+"TAU_TRACK_HEAP | off" 0 0 0 0 0
+"TAU_TRACK_IO_PARAMS | off" 0 0 0 0 0
+"TAU_TRACK_MEMORY_FOOTPRINT | off" 0 0 0 0 0
+"TAU_TRACK_MEMORY_LEAKS | off" 0 0 0 0 0
+"TAU_TRACK_MESSAGE | on" 0 0 0 0 0
+"TAU_TRACK_SIGNALS | off" 0 0 0 0 0
+"TAU_TRACK_UNIFIED_MEMORY | off" 0 0 0 0 0
+"Timestamp | 1498809550026950" 0 0 0 0 0
+"UTC Time | 2017-06-30T07:59:10Z" 0 0 0 0 0
+"pid | 2425" 0 0 0 0 0
+"tid | 2425" 0 0 0 0 0
+"username | user" 0 0 0 0 0
+"ONESIDED_MESSAGE_SEND" 0 0 0 0 0
+"ONESIDED_MESSAGE_RECV" 0 0 0 0 0
+"ONESIDED_MESSAGE_RECIPROCAL_SEND" 0 0 0 0 0
+"ONESIDED_MESSAGE_RECIPROCAL_RECV" 0 0 0 0 0
+"ONESIDED_MESSAGE" 0 0 0 0 0
+"ONESIDED_MESSAGE_ID_TriggerValueT1" 0 0 0 0 0
+"ONESIDED_MESSAGE_ID_TriggerValueT2" 0 0 0 0 0
+"Message size sent to all nodes" 1 4 4 4 16
+"Starting Timestamp | 1498809550027544" 0 0 0 0 0
+"Timestamp | 1498809550027625" 0 0 0 0 0
+"pid | 2426" 0 0 0 0 0
+"tid | 2426" 0 0 0 0 0
+"Starting Timestamp | 1498809550028570" 1 1 1 1 1
+"Timestamp | 1498809550028651" 1 1 1 1 1
+"pid | 2427" 1 1 1 1 1
+"tid | 2427" 1 1 1 1 1
+"Starting Timestamp | 1498809550029350" 0 0 0 0 0
+"Timestamp | 1498809550029430" 0 0 0 0 0
+"pid | 2428" 0 0 0 0 0
+"tid | 2428" 0 0 0 0 0

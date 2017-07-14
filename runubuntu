@@ -1,0 +1,15 @@
+setenforce 0
+sestatus
+nvidia-docker run -d -h n1 --name c1 -v /dockerdata:/dockerdata ubuntu:mpicl service ssh start -D
+nvidia-docker run -d -h n2 --name c2 -v /dockerdata:/dockerdata ubuntu:mpicl service ssh start -D
+nvidia-docker run -d -h n3 --name c3 -v /dockerdata:/dockerdata ubuntu:mpicl service ssh start -D
+nvidia-docker run -d -h n4 --name c4 -v /dockerdata:/dockerdata ubuntu:mpicl service ssh start -D
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c1
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c2
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c3
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c4
+nvidia-docker run -it --rm -h nn --name cc -v /dockerdata:/dockerdata ubuntu:mpicl /bin/bash
+docker rm c1 -f
+docker rm c2 -f
+docker rm c3 -f
+docker rm c4 -f

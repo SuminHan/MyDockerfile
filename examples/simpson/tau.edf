@@ -1,0 +1,117 @@
+115 dynamic_trace_events
+# FunctionId Group Tag "Name Type" Parameters
+1 TAUEVENT 0 ".TAU <unknown event>" TriggerValue
+2 TAU_USER 0 ".TAU application " EntryExit
+92 TRACER 0 "CONT_EVENT" none
+13 TAUEVENT 0 "CPU Cores | 4" TriggerValue
+14 TAUEVENT 0 "CPU MHz | 2117.296" TriggerValue
+15 TAUEVENT 0 "CPU Type | Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz" TriggerValue
+16 TAUEVENT 0 "CPU Vendor | GenuineIntel" TriggerValue
+17 TAUEVENT 0 "CWD | /dockerdata/examples/simpson" TriggerValue
+18 TAUEVENT 0 "Cache Size | 8192 KB" TriggerValue
+19 TAUEVENT 0 "Command Line | a.out" TriggerValue
+87 TRACER 0 "EV_INIT" none
+20 TAUEVENT 0 "Executable | /dockerdata/examples/simpson/a.out" TriggerValue
+88 TRACER 0 "FLUSH" EntryExit
+89 TRACER 0 "FLUSH_CLOSE" none
+90 TRACER 0 "FLUSH_INITM" none
+21 TAUEVENT 0 "Hostname | localhost.localdomain" TriggerValue
+22 TAUEVENT 0 "Local Time | 2017-06-30T16:59:10+09:00" TriggerValue
+94 TAU_MESSAGE -8 "MESSAGE_RECV" par
+93 TAU_MESSAGE -7 "MESSAGE_SEND" par
+23 TAUEVENT 0 "MPI Processor Name | localhost.localdomain" TriggerValue
+6 MPI 0 "MPI_Comm_rank()  " EntryExit
+5 MPI 0 "MPI_Comm_size()  " EntryExit
+9 MPI 0 "MPI_Finalize()  " EntryExit
+4 MPI 0 "MPI_Init()  " EntryExit
+8 MPI 0 "MPI_Recv()  " EntryExit
+102 MPI 0 "MPI_Send()  " EntryExit
+24 TAUEVENT 0 "Memory Size | 7971896 kB" TriggerValue
+11 TAUEVENT 0 "Message size received from all nodes" TriggerValue
+103 TAUEVENT 0 "Message size sent to all nodes" TriggerValue
+25 TAUEVENT 0 "Node Name | localhost.localdomain" TriggerValue
+26 TAUEVENT 0 "OMP_CHUNK_SIZE | 1" TriggerValue
+27 TAUEVENT 0 "OMP_DYNAMIC | off" TriggerValue
+28 TAUEVENT 0 "OMP_MAX_THREADS | 8" TriggerValue
+29 TAUEVENT 0 "OMP_NESTED | off" TriggerValue
+30 TAUEVENT 0 "OMP_NUM_PROCS | 8" TriggerValue
+31 TAUEVENT 0 "OMP_SCHEDULE | UNKNOWN" TriggerValue
+99 TAUEVENT 0 "ONESIDED_MESSAGE" TriggerValue
+100 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT1" TriggerValue
+101 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT2" TriggerValue
+98 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_RECV" TriggerValue
+97 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_SEND" TriggerValue
+96 TAUEVENT 0 "ONESIDED_MESSAGE_RECV" TriggerValue
+95 TAUEVENT 0 "ONESIDED_MESSAGE_SEND" TriggerValue
+32 TAUEVENT 0 "OS Machine | x86_64" TriggerValue
+33 TAUEVENT 0 "OS Name | Linux" TriggerValue
+34 TAUEVENT 0 "OS Release | 3.10.0-514.21.2.el7.x86_64" TriggerValue
+35 TAUEVENT 0 "OS Version | #1 SMP Tue Jun 20 12:24:47 UTC 2017" TriggerValue
+36 TAUEVENT 0 "Starting Timestamp | 1498809550026849" TriggerValue
+104 TAUEVENT 0 "Starting Timestamp | 1498809550027544" TriggerValue
+108 TAUEVENT 0 "Starting Timestamp | 1498809550028570" TriggerValue
+112 TAUEVENT 0 "Starting Timestamp | 1498809550029350" TriggerValue
+37 TAUEVENT 0 "TAU Architecture | default" TriggerValue
+38 TAUEVENT 0 "TAU Config |  -c++=mpiCC -cc=mpicc -mpi -MPITRACE -slog2 -PROFILE -TRACE -openmp -pdt=/root/tau_install/pdtoolkit-3.24 -mpiinc=/usr/local/include -mpilib=/usr/local/lib -opencl=/usr/" TriggerValue
+39 TAUEVENT 0 "TAU Makefile | /root/tau_install/tau-2.26.2p1/x86_64/lib/Makefile.tau-mpi-pdt-openmp-profile-trace-mpitrace" TriggerValue
+40 TAUEVENT 0 "TAU MetaData Merge Time | 5.8E-05 seconds" TriggerValue
+41 TAUEVENT 0 "TAU Version | 2.26.2p1" TriggerValue
+42 TAUEVENT 0 "TAU_BFD_LOOKUP | on" TriggerValue
+43 TAUEVENT 0 "TAU_CALLPATH_DEPTH | 2" TriggerValue
+44 TAUEVENT 0 "TAU_CALLSITE_DEPTH | 1" TriggerValue
+45 TAUEVENT 0 "TAU_COMM_MATRIX | off" TriggerValue
+46 TAUEVENT 0 "TAU_CUDA_BINARY_EXE | " TriggerValue
+47 TAUEVENT 0 "TAU_CUPTI_API | runtime" TriggerValue
+48 TAUEVENT 0 "TAU_EBS_KEEP_UNRESOLVED_ADDR | off" TriggerValue
+49 TAUEVENT 0 "TAU_IBM_BG_HWP_COUNTERS | off" TriggerValue
+50 TAUEVENT 0 "TAU_MAX_THREADS | 128" TriggerValue
+51 TAUEVENT 0 "TAU_MEASURE_TAU | off" TriggerValue
+52 TAUEVENT 0 "TAU_MEMDBG_PROTECT_ABOVE | off" TriggerValue
+53 TAUEVENT 0 "TAU_MEMDBG_PROTECT_BELOW | off" TriggerValue
+54 TAUEVENT 0 "TAU_MEMDBG_PROTECT_FREE | off" TriggerValue
+55 TAUEVENT 0 "TAU_OPENMP_RUNTIME | on" TriggerValue
+56 TAUEVENT 0 "TAU_OPENMP_RUNTIME_EVENTS | on" TriggerValue
+57 TAUEVENT 0 "TAU_OPENMP_RUNTIME_STATES | off" TriggerValue
+58 TAUEVENT 0 "TAU_OUTPUT_CUDA_CSV | off" TriggerValue
+59 TAUEVENT 0 "TAU_PAPI_MULTIPLEXING | off" TriggerValue
+60 TAUEVENT 0 "TAU_PROFILE | off" TriggerValue
+61 TAUEVENT 0 "TAU_PROFILE_FORMAT | profile" TriggerValue
+62 TAUEVENT 0 "TAU_SAMPLING | off" TriggerValue
+63 TAUEVENT 0 "TAU_SHOW_MEMORY_FUNCTIONS | off" TriggerValue
+64 TAUEVENT 0 "TAU_SIGNALS_GDB | off" TriggerValue
+65 TAUEVENT 0 "TAU_SOS | on" TriggerValue
+66 TAUEVENT 0 "TAU_SYNCHRONIZE_CLOCKS | on" TriggerValue
+67 TAUEVENT 0 "TAU_THROTTLE | on" TriggerValue
+68 TAUEVENT 0 "TAU_THROTTLE_NUMCALLS | 100000" TriggerValue
+69 TAUEVENT 0 "TAU_THROTTLE_PERCALL | 10" TriggerValue
+70 TAUEVENT 0 "TAU_TRACE | on" TriggerValue
+71 TAUEVENT 0 "TAU_TRACK_CUDA_CDP | off" TriggerValue
+72 TAUEVENT 0 "TAU_TRACK_CUDA_INSTRUCTIONS | " TriggerValue
+73 TAUEVENT 0 "TAU_TRACK_CUDA_SASS | off" TriggerValue
+74 TAUEVENT 0 "TAU_TRACK_HEADROOM | off" TriggerValue
+75 TAUEVENT 0 "TAU_TRACK_HEAP | off" TriggerValue
+76 TAUEVENT 0 "TAU_TRACK_IO_PARAMS | off" TriggerValue
+77 TAUEVENT 0 "TAU_TRACK_MEMORY_FOOTPRINT | off" TriggerValue
+78 TAUEVENT 0 "TAU_TRACK_MEMORY_LEAKS | off" TriggerValue
+79 TAUEVENT 0 "TAU_TRACK_MESSAGE | on" TriggerValue
+80 TAUEVENT 0 "TAU_TRACK_SIGNALS | off" TriggerValue
+81 TAUEVENT 0 "TAU_TRACK_UNIFIED_MEMORY | off" TriggerValue
+12 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
+10 TAUEVENT 0 "TauTraceClockOffsetStart" TriggerValue
+82 TAUEVENT 0 "Timestamp | 1498809550026950" TriggerValue
+105 TAUEVENT 0 "Timestamp | 1498809550027625" TriggerValue
+109 TAUEVENT 0 "Timestamp | 1498809550028651" TriggerValue
+113 TAUEVENT 0 "Timestamp | 1498809550029430" TriggerValue
+83 TAUEVENT 0 "UTC Time | 2017-06-30T07:59:10Z" TriggerValue
+91 TRACER 0 "WALL_CLOCK" none
+3 TAU_DEFAULT 0 "int main(int, char **) C [{simpson-mpicl.c} {18,1}-{234,1}]  " EntryExit
+84 TAUEVENT 0 "pid | 2425" TriggerValue
+106 TAUEVENT 0 "pid | 2426" TriggerValue
+110 TAUEVENT 0 "pid | 2427" TriggerValue
+114 TAUEVENT 0 "pid | 2428" TriggerValue
+85 TAUEVENT 0 "tid | 2425" TriggerValue
+107 TAUEVENT 0 "tid | 2426" TriggerValue
+111 TAUEVENT 0 "tid | 2427" TriggerValue
+115 TAUEVENT 0 "tid | 2428" TriggerValue
+86 TAUEVENT 0 "username | user" TriggerValue
+7 TAU_USER 0 "void equal_load(int, int, int, int, int *, int *) C [{simpson-mpicl.c} {236,1}-{244,1}]  " EntryExit

@@ -1,0 +1,33 @@
+32 dynamic_trace_events
+# FunctionId Group Tag "Name Type" Parameters
+0 TAUEVENT 0 ".TAU <unknown event>" TriggerValue
+1 TAU_USER 0 ".TAU application " EntryExit
+2 TAU_DEFAULT 0 "int main(int, char **) C [{simpson-mpicl.c} {18,1}-{234,1}]  " EntryExit
+3 MPI 0 "MPI_Init()  " EntryExit
+5 MPI 0 "MPI_Comm_size()  " EntryExit
+6 MPI 0 "MPI_Comm_rank()  " EntryExit
+7 TAU_USER 0 "void equal_load(int, int, int, int, int *, int *) C [{simpson-mpicl.c} {236,1}-{244,1}]  " EntryExit
+8 MPI 0 "MPI_Send()  " EntryExit
+10 MPI 0 "MPI_Finalize()  " EntryExit
+4 TAUEVENT 0 "TauTraceClockOffsetStart" TriggerValue
+9 TAUEVENT 0 "Message size sent to all nodes" TriggerValue
+11 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
+12 TAUEVENT 0 "Starting Timestamp | 1498809550029350" TriggerValue
+13 TAUEVENT 0 "Timestamp | 1498809550029430" TriggerValue
+14 TAUEVENT 0 "pid | 2428" TriggerValue
+15 TAUEVENT 0 "tid | 2428" TriggerValue
+60000 TRACER 0 "EV_INIT" none
+60001 TRACER 0 "FLUSH" EntryExit
+60003 TRACER 0 "FLUSH_CLOSE" none
+60004 TRACER 0 "FLUSH_INITM" none
+60005 TRACER 0 "WALL_CLOCK" none
+60006 TRACER 0 "CONT_EVENT" none
+60007 TAU_MESSAGE -7 "MESSAGE_SEND" par
+60008 TAU_MESSAGE -8 "MESSAGE_RECV" par
+70000 TAUEVENT 0 "ONESIDED_MESSAGE_SEND" TriggerValue
+70001 TAUEVENT 0 "ONESIDED_MESSAGE_RECV" TriggerValue
+70005 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_SEND" TriggerValue
+70006 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_RECV" TriggerValue
+70004 TAUEVENT 0 "ONESIDED_MESSAGE" TriggerValue
+70002 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT1" TriggerValue
+70003 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT2" TriggerValue

@@ -1,0 +1,15 @@
+setenforce 0
+sestatus
+nvidia-docker run -d -h n1 --name c1 --privileged=true -v /dockerdata:/dockerdata debian:gang /bin/bash -c "/etc/init.d/ganglia-monitor start; service ssh start -D"
+nvidia-docker run -d -h n2 --name c2 --privileged=true -v /dockerdata:/dockerdata debian:gang /bin/bash -c "/etc/init.d/ganglia-monitor start; service ssh start -D"
+nvidia-docker run -d -h n3 --name c3 --privileged=true -v /dockerdata:/dockerdata debian:gang /bin/bash -c "/etc/init.d/ganglia-monitor start; service ssh start -D"
+nvidia-docker run -d -h n4 --name c4 --privileged=true -v /dockerdata:/dockerdata debian:gang /bin/bash -c "/etc/init.d/ganglia-monitor start; service ssh start -D"
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c1
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c2
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c3
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" c4
+nvidia-docker run -it --rm -h nn --name cc --privileged=true -v /dockerdata:/dockerdata debian:gang /bin/bash -c "/etc/init.d/ganglia-monitor start; /bin/bash"
+docker rm c1 -f
+docker rm c2 -f
+docker rm c3 -f
+docker rm c4 -f
