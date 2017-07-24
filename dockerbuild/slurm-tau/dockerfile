@@ -1,0 +1,101 @@
+# Docker Image
+# OpenMPI + OpenCL (NVIDIA) + Slurm + Ganglia
+FROM centos
+MAINTAINER "Sumin Han @ Satreci (KAIST internship)"
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+
+RUN yum -y install epel-release
+RUN yum -y update
+
+# OpenMPI Installation
+RUN yum install -y which tar perl gcc gcc-c++ make
+RUN curl -O https://www.open-mpi.org/software/ompi/v2.1/downloads/openmpi-2.1.1.tar.gz \
+	&& gunzip -c openmpi-2.1.1.tar.gz | tar xf - \
+	&& cd openmpi-2.1.1 \
+	&& ./configure --prefix=/usr/local \
+	&& make all install
+RUN rm -r -f openmpi-2.1.1.tar.gz openmpi-2.1.1
+
+ENV PATH /usr/local/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
+
+# OpenCL Setting
+RUN yum install -y ocl-icd clinfo
+
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+ 
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+ 
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:$LD_LIBRARY_PATH
+
+# OpenSSH Setting (Public Key registeration)
+RUN yum install -y openssh-server openssh-clients
+RUN ssh-keygen -A
+RUN ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
+RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+RUN echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+# Slurm Installation
+RUN groupadd -r slurm && useradd -r -g slurm slurm
+
+RUN yum -y install wget bzip2 perl gcc make munge munge-devel supervisor 
+
+ENV SLURM_VERSION 17.02.6
+ENV SLURM_DOWNLOAD_MD5 93d5afd7a18680923b08aefa528ba9db
+ENV SLURM_DOWNLOAD_URL http://www.schedmd.com/download/latest/slurm-"$SLURM_VERSION".tar.bz2
+
+RUN set -x \
+    && wget -O slurm.tar.bz2 "$SLURM_DOWNLOAD_URL" \
+    && echo "$SLURM_DOWNLOAD_MD5" slurm.tar.bz2 | md5sum -c - \
+    && mkdir /usr/local/src/slurm \
+    && tar jxf slurm.tar.bz2 -C /usr/local/src/slurm --strip-components=1 \
+    && rm slurm.tar.bz2 \
+    && cd /usr/local/src/slurm \
+    && ./configure --enable-debug --enable-front-end --prefix=/usr --sysconfdir=/etc/slurm \
+    && make install \
+    && install -D -m644 etc/cgroup.conf.example /etc/slurm/cgroup.conf.example \
+    && install -D -m644 etc/slurm.conf.example /etc/slurm/slurm.conf.example \
+    && install -D -m644 etc/slurm.epilog.clean /etc/slurm/slurm.epilog.clean \
+    && install -D -m644 etc/slurmdbd.conf.example /etc/slurm/slurmdbd.conf.example \
+    && cd \
+    && rm -rf /usr/local/src/slurm \
+    && mkdir /etc/sysconfig/slurm \
+    && mkdir /var/spool/slurmd \
+    && chown slurm:slurm /var/spool/slurmd \
+    && mkdir /var/run/slurmd \
+    && chown slurm:slurm /var/run/slurmd \
+    && mkdir /var/lib/slurmd \
+    && chown slurm:slurm /var/lib/slurmd \
+    && /sbin/create-munge-key
+
+
+COPY slurm.conf /etc/slurm/slurm.conf
+
+COPY supervisord.conf /etc/
+
+# Ganglia Install
+RUN yum install -y ganglia-gmond
+COPY gmond.conf /etc/ganglia/gmond.conf
+
+# TAU install
+RUN mkdir /tau \
+	&& cd /tau \
+	&& wget https://www.cs.uoregon.edu/research/tau/tau_releases/tau-2.26.tar.gz \
+	&& wget https://www.cs.uoregon.edu/research/tau/pdt_releases/pdt-3.24.tar.gz \
+	&& tar -xzvf tau-2.26.tar.gz \
+	&& tar -xzvf pdt-3.24.tar.gz \
+	&& cd pdtoolkit-3.24 && ./configure && make && make install && cd .. \
+	&& cd tau-2.26 \
+	&& ./configure -c++=mpiCC  -cc=mpicc  -pdt=/tau/pdtoolkit-3.24  -mpi  -mpiinc=/usr/local/include  -mpilib=/usr/local/lib  -MPITRACE  -PROFILEPHASE  -PROFILEMEMORY  -PROFILE  -TRACE  -slog2  -openmp  -CPUTIME  -LINUXTIMERS  -iowrapper \
+	&& make && make install && cd .. \
+	&& rm -rf tau-2.26.tar.gz pdt-3.24.tar.gz
+ENV PATH /tau/tau-2.26/x86_64/bin:$PATH
+ENV TAU_MAKEFILE /tau/tau-2.26/x86_64/lib/Makefile.tau-memory-phase-mpi-pdt-openmp-profile-trace-mpitrace
+
+# Other utils
+RUN yum -y install net-tools nano
+# RUN yum -y install mesa-\*
+RUN yum -y install ocl-icd-devel java

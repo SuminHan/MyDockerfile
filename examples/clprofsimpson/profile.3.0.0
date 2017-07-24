@@ -1,0 +1,27 @@
+8 templated_functions
+# Name Calls Subrs Excl Incl ProfileCalls
+".TAU application " 1 1 54 333978 0 GROUP="TAU_USER"
+"int main(int, char **) C [{simpson-mpicl.c} {18,1}-{238,1}]  " 1 5 308666 333924 0 GROUP="TAU_DEFAULT"
+"MPI_Init()  " 1 0 22647 22647 0 GROUP="MPI"
+"MPI_Comm_size()  " 1 0 4 4 0 GROUP="MPI"
+"MPI_Comm_rank()  " 1 0 1 1 0 GROUP="MPI"
+"MPI_Recv()  " 0 0 0 0 0 GROUP="MPI"
+"MPI_Finalize()  " 1 0 2579 2579 0 GROUP="MPI"
+"MPI_Send()  " 1 0 27 27 0 GROUP="MPI"
+0 aggregates
+14 userevents
+# eventname numevents max min mean sumsqr
+".TAU <unknown event>" 0 0 0 0 0
+".TAU application  - Heap Memory Used (KB)" 1 169 169 169 28561
+"int main(int, char **) C [{simpson-mpicl.c} {18,1}-{238,1}]   - Heap Memory Used (KB)" 1 1716 1716 1716 2944656
+"MPI_Init()   - Heap Memory Used (KB)" 1 1827 1827 1827 3337929
+"TauTraceClockOffsetStart" 0 0 0 0 0
+"MPI_Comm_size()   - Heap Memory Used (KB)" 1 4708 4708 4708 22165264
+"MPI_Comm_rank()   - Heap Memory Used (KB)" 1 4818 4818 4818 23213124
+"void equal_load(int, int, int, int, int *, int *) C [{simpson-mpicl.c} {240,1}-{248,1}]   - Heap Memory Used (KB)" 1 5957 5957 5957 35485849
+"MPI_Recv()   - Heap Memory Used (KB)" 0 0 0 0 0
+"Message size received from all nodes" 0 0 0 0 0
+"MPI_Finalize()   - Heap Memory Used (KB)" 1 8299 8299 8299 68873401
+"TauTraceClockOffsetEnd" 0 0 0 0 0
+"MPI_Send()   - Heap Memory Used (KB)" 1 10040 10040 10040 100801600
+"Message size sent to all nodes" 1 4 4 4 16

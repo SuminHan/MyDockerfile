@@ -1,0 +1,75 @@
+# Docker Image
+# OpenMPI + OpenCL (NVIDIA) + Slurm + Ganglia
+FROM debian
+MAINTAINER "Sumin Han @ Satreci (KAIST internship)"
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+
+RUN apt update && apt upgrade -y
+
+RUN apt-get install -y apt-utils ocl-icd-dev ocl-icd-libopencl1 clinfo 
+  
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
+  
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
+    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+ 
+RUN apt install openmpi-bin -y
+RUN apt install openssh-server -y
+RUN apt install openssh-client -y
+#openssh-server openssh-client
+  
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+RUN ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
+RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+RUN echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+# Ganglia Install
+RUN apt install -y ganglia-monitor
+COPY gmond.conf /etc/ganglia/gmond.conf
+
+# Slurm Installation
+RUN groupadd -r slurm && useradd -r -g slurm slurm
+
+#RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN apt -y install wget bzip2 perl gcc git make munge libmunge-dev libmunge2 \
+    supervisor python python-pip
+RUN pip install --upgrade pip
+RUN pip install Cython nose
+
+ENV SLURM_VERSION 17.02.6
+ENV SLURM_DOWNLOAD_MD5 93d5afd7a18680923b08aefa528ba9db
+ENV SLURM_DOWNLOAD_URL http://www.schedmd.com/download/latest/slurm-"$SLURM_VERSION".tar.bz2
+
+RUN set -x \
+    && wget -O slurm.tar.bz2 "$SLURM_DOWNLOAD_URL" \
+    && echo "$SLURM_DOWNLOAD_MD5" slurm.tar.bz2 | md5sum -c - \
+    && mkdir /usr/local/src/slurm \
+    && tar jxf slurm.tar.bz2 -C /usr/local/src/slurm --strip-components=1 \
+    && rm slurm.tar.bz2 \
+    && cd /usr/local/src/slurm \
+    && ./configure --enable-debug --enable-front-end --prefix=/usr --sysconfdir=/etc/slurm \
+    && make install \
+    && install -D -m644 etc/cgroup.conf.example /etc/slurm/cgroup.conf.example \
+    && install -D -m644 etc/slurm.conf.example /etc/slurm/slurm.conf.example \
+    && install -D -m644 etc/slurm.epilog.clean /etc/slurm/slurm.epilog.clean \
+    && install -D -m644 etc/slurmdbd.conf.example /etc/slurm/slurmdbd.conf.example
+
+RUN cd \
+    && rm -rf /usr/local/src/slurm \
+    #&& mkdir /etc/sysconfig/slurm \
+    && mkdir /var/spool/slurmd \
+    && chown slurm:slurm /var/spool/slurmd \
+    && mkdir /var/run/slurmd \
+    && chown slurm:slurm /var/run/slurmd \
+    && mkdir /var/lib/slurmd \
+    && chown slurm:slurm /var/lib/slurmd \
+    && /sbin/create-munge-key
+
+COPY slurm.conf /etc/slurm/slurm.conf
+
+COPY supervisord.conf /etc/
+
+RUN apt -y install nano
+#ENTRYPOINT /usr/bin/supervisord -c /etc/supervisord.conf && /bin/bash

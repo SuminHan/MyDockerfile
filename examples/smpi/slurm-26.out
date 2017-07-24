@@ -1,0 +1,5 @@
+1 processes is alive
+2000000000    3.1415926535898 n, rslt0
+2000000001 ncall0
+        44.473 s        0.74122 m       0.012354 h     0.00051474 d
+[n1:00944] PMIX ERROR: BAD-PARAM in file src/dstore/pmix_esh.c at line 491

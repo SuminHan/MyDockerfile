@@ -1,0 +1,30 @@
+29 dynamic_trace_events
+# FunctionId Group Tag "Name Type" Parameters
+0 TAUEVENT 0 ".TAU <unknown event>" TriggerValue
+1 TAU_USER 0 ".TAU application " EntryExit
+3 TAU_DEFAULT 0 "int main(int, char **) C [{simpson-mpicl.c} {18,1}-{238,1}]  " EntryExit
+5 MPI 0 "MPI_Init()  " EntryExit
+8 MPI 0 "MPI_Comm_size()  " EntryExit
+10 MPI 0 "MPI_Comm_rank()  " EntryExit
+12 TAU_USER 0 "void equal_load(int, int, int, int, int *, int *) C [{simpson-mpicl.c} {240,1}-{248,1}]  " EntryExit
+14 MPI 0 "MPI_Recv()  " EntryExit
+17 MPI 0 "MPI_Finalize()  " EntryExit
+2 TAUEVENT 0 ".TAU application  - Heap Memory Used (KB)" TriggerValue
+4 TAUEVENT 0 "int main(int, char **) C [{simpson-mpicl.c} {18,1}-{238,1}]   - Heap Memory Used (KB)" TriggerValue
+6 TAUEVENT 0 "MPI_Init()   - Heap Memory Used (KB)" TriggerValue
+7 TAUEVENT 0 "TauTraceClockOffsetStart" TriggerValue
+9 TAUEVENT 0 "MPI_Comm_size()   - Heap Memory Used (KB)" TriggerValue
+11 TAUEVENT 0 "MPI_Comm_rank()   - Heap Memory Used (KB)" TriggerValue
+13 TAUEVENT 0 "void equal_load(int, int, int, int, int *, int *) C [{simpson-mpicl.c} {240,1}-{248,1}]   - Heap Memory Used (KB)" TriggerValue
+15 TAUEVENT 0 "MPI_Recv()   - Heap Memory Used (KB)" TriggerValue
+16 TAUEVENT 0 "Message size received from all nodes" TriggerValue
+18 TAUEVENT 0 "MPI_Finalize()   - Heap Memory Used (KB)" TriggerValue
+19 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
+60000 TRACER 0 "EV_INIT" none
+60001 TRACER 0 "FLUSH" EntryExit
+60003 TRACER 0 "FLUSH_CLOSE" none
+60004 TRACER 0 "FLUSH_INITM" none
+60005 TRACER 0 "WALL_CLOCK" none
+60006 TRACER 0 "CONT_EVENT" none
+60007 TAU_MESSAGE -7 "MESSAGE_SEND" par
+60008 TAU_MESSAGE -8 "MESSAGE_RECV" par

@@ -7,7 +7,7 @@ nvidia-docker run -d -h n1 --name c1 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
--v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
+-v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
 
 nvidia-docker run -d -h n2 --name c2 \
 --add-host n1:172.17.0.2 \
@@ -16,7 +16,7 @@ nvidia-docker run -d -h n2 --name c2 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
--v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
+-v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
 
 nvidia-docker run -d -h n3 --name c3 \
 --add-host n1:172.17.0.2 \
@@ -25,7 +25,7 @@ nvidia-docker run -d -h n3 --name c3 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
--v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
+-v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
 
 nvidia-docker run -d -h n4 --name c4 \
 --add-host n1:172.17.0.2 \
@@ -34,7 +34,7 @@ nvidia-docker run -d -h n4 --name c4 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
--v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
+-v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
 
 nvidia-docker run -d -h n5 --name c5 \
 --add-host n1:172.17.0.2 \
@@ -43,7 +43,7 @@ nvidia-docker run -d -h n5 --name c5 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
--v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
+-v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord && /usr/sbin/sshd -D"
 
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" c1
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" c2
@@ -57,7 +57,7 @@ nvidia-docker run -it --rm -h n6 --name c6 \
 --add-host n4:172.17.0.5 \
 --add-host n5:172.17.0.6 \
 --add-host n6:172.17.0.7 \
- -v /dockerdata:/dockerdata slurm-all /bin/bash -c "/usr/bin/supervisord -c /etc/supervisord.conf && /bin/bash"
+ -v /dockerdata:/dockerdata slurm-17.02.6 /bin/bash -c "/usr/bin/supervisord -c /etc/supervisord.conf && /bin/bash"
 
 docker rm c1 -f
 docker rm c2 -f

@@ -1,0 +1,106 @@
+105 dynamic_trace_events
+# FunctionId Group Tag "Name Type" Parameters
+0 TAUEVENT 0 ".TAU <unknown event>" TriggerValue
+1 TAU_USER 0 ".TAU application " EntryExit
+2 TAU_DEFAULT 0 "int main(int, char **) C [{test.c} {20,1}-{65,1}]  " EntryExit
+3 MPI 0 "MPI_Init()  " EntryExit
+5 MPI 0 "MPI_Comm_rank()  " EntryExit
+6 MPI 0 "MPI_Comm_size()  " EntryExit
+7 TAU_USER 0 "double simpson2(double (*)(double), int, double, double, int, int) C [{test.c} {77,1}-{109,1}]  " EntryExit
+8 TAU_USER 0 "void equal_load(int, int, int, int, int *, int *) C [{test.c} {67,1}-{75,1}]  " EntryExit
+9 TAU_DISABLE 0 "double func(double) C [{test.c} {15,1}-{18,1}] [THROTTLED]" EntryExit
+10 MPI 0 "MPI_Reduce()  " EntryExit
+14 MPI 0 "MPI_Finalize()  " EntryExit
+4 TAUEVENT 0 "TauTraceClockOffsetStart" TriggerValue
+11 TAUEVENT 0 "Message size for reduce" TriggerValue
+12 TAUEVENT 0 "[GROUP=MIN_MARKER] Message size for reduce" TriggerValue
+13 TAUEVENT 0 "[GROUP=MIN_MARKER] Message size for reduce : int main(int, char **) C [{test.c} {20,1}-{65,1}]   => MPI_Reduce()  " TriggerValue
+15 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
+16 TAUEVENT 0 "CPU Cores | 4" TriggerValue
+17 TAUEVENT 0 "CPU MHz | 2503.117" TriggerValue
+18 TAUEVENT 0 "CPU Type | Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz" TriggerValue
+19 TAUEVENT 0 "CPU Vendor | GenuineIntel" TriggerValue
+20 TAUEVENT 0 "CWD | /dockerdata/examples/smpi" TriggerValue
+21 TAUEVENT 0 "Cache Size | 8192 KB" TriggerValue
+22 TAUEVENT 0 "Command Line | a.out" TriggerValue
+23 TAUEVENT 0 "Executable | /dockerdata/examples/smpi/a.out" TriggerValue
+24 TAUEVENT 0 "Hostname | n1" TriggerValue
+25 TAUEVENT 0 "Local Time | 2017-07-21T08:50:02+00:00" TriggerValue
+26 TAUEVENT 0 "MPI Processor Name | n1" TriggerValue
+27 TAUEVENT 0 "Memory Size | 7971896 kB" TriggerValue
+28 TAUEVENT 0 "Node Name | n1" TriggerValue
+29 TAUEVENT 0 "OMP_CHUNK_SIZE | 1" TriggerValue
+30 TAUEVENT 0 "OMP_DYNAMIC | off" TriggerValue
+31 TAUEVENT 0 "OMP_MAX_THREADS | 8" TriggerValue
+32 TAUEVENT 0 "OMP_NESTED | off" TriggerValue
+33 TAUEVENT 0 "OMP_NUM_PROCS | 8" TriggerValue
+34 TAUEVENT 0 "OMP_SCHEDULE | UNKNOWN" TriggerValue
+35 TAUEVENT 0 "OS Machine | x86_64" TriggerValue
+36 TAUEVENT 0 "OS Name | Linux" TriggerValue
+37 TAUEVENT 0 "OS Release | 3.10.0-514.21.2.el7.x86_64" TriggerValue
+38 TAUEVENT 0 "OS Version | #1 SMP Tue Jun 20 12:24:47 UTC 2017" TriggerValue
+39 TAUEVENT 0 "Starting Timestamp | 1500627002046486" TriggerValue
+40 TAUEVENT 0 "TAU Architecture | default" TriggerValue
+41 TAUEVENT 0 "TAU Config |  -c++=mpiCC -cc=mpicc -mpi -MPITRACE -slog2 -PROFILE -TRACE -openmp -pdt=/root/tau_install/pdtoolkit-3.24 -mpiinc=/usr/local/include -mpilib=/usr/local/lib -opencl=/usr/" TriggerValue
+42 TAUEVENT 0 "TAU Makefile | /root/tau_install/tau-2.26.2p1/x86_64/lib/Makefile.tau-mpi-pdt-openmp-profile-trace-mpitrace" TriggerValue
+43 TAUEVENT 0 "TAU MetaData Merge Time | 5.1E-05 seconds" TriggerValue
+44 TAUEVENT 0 "TAU Version | 2.26.2p1" TriggerValue
+45 TAUEVENT 0 "TAU_BFD_LOOKUP | on" TriggerValue
+46 TAUEVENT 0 "TAU_CALLPATH_DEPTH | 2" TriggerValue
+47 TAUEVENT 0 "TAU_CALLSITE_DEPTH | 1" TriggerValue
+48 TAUEVENT 0 "TAU_COMM_MATRIX | off" TriggerValue
+49 TAUEVENT 0 "TAU_CUDA_BINARY_EXE | " TriggerValue
+50 TAUEVENT 0 "TAU_CUPTI_API | runtime" TriggerValue
+51 TAUEVENT 0 "TAU_EBS_KEEP_UNRESOLVED_ADDR | off" TriggerValue
+52 TAUEVENT 0 "TAU_IBM_BG_HWP_COUNTERS | off" TriggerValue
+53 TAUEVENT 0 "TAU_MAX_THREADS | 128" TriggerValue
+54 TAUEVENT 0 "TAU_MEASURE_TAU | off" TriggerValue
+55 TAUEVENT 0 "TAU_MEMDBG_PROTECT_ABOVE | off" TriggerValue
+56 TAUEVENT 0 "TAU_MEMDBG_PROTECT_BELOW | off" TriggerValue
+57 TAUEVENT 0 "TAU_MEMDBG_PROTECT_FREE | off" TriggerValue
+58 TAUEVENT 0 "TAU_OPENMP_RUNTIME | on" TriggerValue
+59 TAUEVENT 0 "TAU_OPENMP_RUNTIME_EVENTS | on" TriggerValue
+60 TAUEVENT 0 "TAU_OPENMP_RUNTIME_STATES | off" TriggerValue
+61 TAUEVENT 0 "TAU_OUTPUT_CUDA_CSV | off" TriggerValue
+62 TAUEVENT 0 "TAU_PAPI_MULTIPLEXING | off" TriggerValue
+63 TAUEVENT 0 "TAU_PROFILE | off" TriggerValue
+64 TAUEVENT 0 "TAU_PROFILE_FORMAT | profile" TriggerValue
+65 TAUEVENT 0 "TAU_SAMPLING | off" TriggerValue
+66 TAUEVENT 0 "TAU_SHOW_MEMORY_FUNCTIONS | off" TriggerValue
+67 TAUEVENT 0 "TAU_SIGNALS_GDB | off" TriggerValue
+68 TAUEVENT 0 "TAU_SOS | on" TriggerValue
+69 TAUEVENT 0 "TAU_SYNCHRONIZE_CLOCKS | on" TriggerValue
+70 TAUEVENT 0 "TAU_THROTTLE | on" TriggerValue
+71 TAUEVENT 0 "TAU_THROTTLE_NUMCALLS | 100000" TriggerValue
+72 TAUEVENT 0 "TAU_THROTTLE_PERCALL | 10" TriggerValue
+73 TAUEVENT 0 "TAU_TRACE | on" TriggerValue
+74 TAUEVENT 0 "TAU_TRACK_CUDA_CDP | off" TriggerValue
+75 TAUEVENT 0 "TAU_TRACK_CUDA_INSTRUCTIONS | " TriggerValue
+76 TAUEVENT 0 "TAU_TRACK_CUDA_SASS | off" TriggerValue
+77 TAUEVENT 0 "TAU_TRACK_HEADROOM | off" TriggerValue
+78 TAUEVENT 0 "TAU_TRACK_HEAP | off" TriggerValue
+79 TAUEVENT 0 "TAU_TRACK_IO_PARAMS | off" TriggerValue
+80 TAUEVENT 0 "TAU_TRACK_MEMORY_FOOTPRINT | off" TriggerValue
+81 TAUEVENT 0 "TAU_TRACK_MEMORY_LEAKS | off" TriggerValue
+82 TAUEVENT 0 "TAU_TRACK_MESSAGE | on" TriggerValue
+83 TAUEVENT 0 "TAU_TRACK_SIGNALS | off" TriggerValue
+84 TAUEVENT 0 "TAU_TRACK_UNIFIED_MEMORY | off" TriggerValue
+85 TAUEVENT 0 "Timestamp | 1500627002046555" TriggerValue
+86 TAUEVENT 0 "UTC Time | 2017-07-21T08:50:02Z" TriggerValue
+87 TAUEVENT 0 "pid | 85" TriggerValue
+88 TAUEVENT 0 "tid | 85" TriggerValue
+60000 TRACER 0 "EV_INIT" none
+60001 TRACER 0 "FLUSH" EntryExit
+60003 TRACER 0 "FLUSH_CLOSE" none
+60004 TRACER 0 "FLUSH_INITM" none
+60005 TRACER 0 "WALL_CLOCK" none
+60006 TRACER 0 "CONT_EVENT" none
+60007 TAU_MESSAGE -7 "MESSAGE_SEND" par
+60008 TAU_MESSAGE -8 "MESSAGE_RECV" par
+70000 TAUEVENT 0 "ONESIDED_MESSAGE_SEND" TriggerValue
+70001 TAUEVENT 0 "ONESIDED_MESSAGE_RECV" TriggerValue
+70005 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_SEND" TriggerValue
+70006 TAUEVENT 0 "ONESIDED_MESSAGE_RECIPROCAL_RECV" TriggerValue
+70004 TAUEVENT 0 "ONESIDED_MESSAGE" TriggerValue
+70002 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT1" TriggerValue
+70003 TAUEVENT 0 "ONESIDED_MESSAGE_ID_TriggerValueT2" TriggerValue
