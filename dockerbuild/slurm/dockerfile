@@ -29,7 +29,7 @@ RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
     echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
  
 ENV PATH /usr/local/nvidia/bin:${PATH}
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 # OpenSSH Setting (Public Key registeration)
 RUN yum install -y openssh-server openssh-clients
@@ -38,28 +38,49 @@ RUN ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
 RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 RUN echo "StrictHostKeyChecking no" >> ~/.ssh/config
 
+# Ganglia Install
+RUN yum install -y ganglia-gmond
+COPY gmond.conf /etc/ganglia/gmond.conf
+
 # Slurm Installation
 RUN groupadd -r slurm && useradd -r -g slurm slurm
 
-RUN yum -y install wget bzip2 perl gcc make munge munge-devel supervisor 
+#RUN yum -y install epel-release && yum -y update
+RUN yum -y install munge munge-libs munge-devel
 
-ENV SLURM_VERSION 17.02.6
-ENV SLURM_DOWNLOAD_MD5 93d5afd7a18680923b08aefa528ba9db
-ENV SLURM_DOWNLOAD_URL http://www.schedmd.com/download/latest/slurm-"$SLURM_VERSION".tar.bz2
+#RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum -y install wget bzip2 perl perl-devel gcc gcc-cpp vim-enhanced git make munge munge-devel supervisor \
+	openssl openssl-devel pam-devel numactl numactl-devel hwloc hwloc-devel lua lua-devel readline-devel rrdtool-devel ncurses-devel man2html libibmad libibumad rpm-build
 
-RUN set -x \
-    && wget -O slurm.tar.bz2 "$SLURM_DOWNLOAD_URL" \
-    && echo "$SLURM_DOWNLOAD_MD5" slurm.tar.bz2 | md5sum -c - \
-    && mkdir /usr/local/src/slurm \
-    && tar jxf slurm.tar.bz2 -C /usr/local/src/slurm --strip-components=1 \
-    && rm slurm.tar.bz2 \
-    && cd /usr/local/src/slurm \
-    && ./configure --enable-debug --enable-front-end --prefix=/usr --sysconfdir=/etc/slurm \
-    && make install \
-    && install -D -m644 etc/cgroup.conf.example /etc/slurm/cgroup.conf.example \
-    && install -D -m644 etc/slurm.conf.example /etc/slurm/slurm.conf.example \
-    && install -D -m644 etc/slurm.epilog.clean /etc/slurm/slurm.epilog.clean \
-    && install -D -m644 etc/slurmdbd.conf.example /etc/slurm/slurmdbd.conf.example \
+#ENV SLURM_VERSION 15.08.13
+#ENV SLURM_DOWNLOAD_MD5 93d5afd7a18680923b08aefa528ba9db
+#ENV SLURM_VERSION 17.02.5
+#ENV SLURM_DOWNLOAD_MD5 9bcbddd4bffca6e26b7c03dd96b6f3e2
+#ENV SLURM_DOWNLOAD_URL http://www.schedmd.com/downloads/archive/slurm-"$SLURM_VERSION".tar.bz2
+
+RUN mkdir nfs && cd /nfs \
+	&& wget http://www.schedmd.com/download/latest/slurm-17.02.6.tar.bz2
+RUN cd /nfs && rpmbuild -ta slurm-17.02.6.tar.bz2
+RUN cd /root/rpmbuild/RPMS/x86_64 \
+    && yum -y --nogpgcheck localinstall *
+
+RUN echo "Done"
+
+RUN yum -y install net-tools libcgroup stress
+RUN yum -y install \*cgroup\*
+RUN set -x  \
+#	&& wget -O slurm.tar.bz2 "$SLURM_DOWNLOAD_URL" \
+#	&& echo "$SLURM_DOWNLOAD_MD5" slurm.tar.bz2 | md5sum -c - \
+#	&& mkdir /usr/local/src/slurm \
+#	&& tar jxf slurm.tar.bz2 -C /usr/local/src/slurm --strip-components=1 \
+#    && rm slurm.tar.bz2 \
+#    && cd /usr/local/src/slurm \
+#    && ./configure --enable-debug --enable-front-end --prefix=/usr --sysconfdir=/etc/slurm \
+#    && make install \
+#    && install -D -m644 etc/cgroup.conf.example /etc/slurm/cgroup.conf.example \
+#    && install -D -m644 etc/slurm.conf.example /etc/slurm/slurm.conf.example \
+#    && install -D -m644 etc/slurm.epilog.clean /etc/slurm/slurm.epilog.clean \
+#    && install -D -m644 etc/slurmdbd.conf.example /etc/slurm/slurmdbd.conf.example \
     && cd \
     && rm -rf /usr/local/src/slurm \
     && mkdir /etc/sysconfig/slurm \
@@ -71,31 +92,24 @@ RUN set -x \
     && chown slurm:slurm /var/lib/slurmd \
     && /sbin/create-munge-key
 
-
-COPY slurm.conf /etc/slurm/slurm.conf
+#RUN yum -y install mesa-libGL-devel mesa-libGLU-devel
+RUN wget ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
+RUN tar xvjf valgrind-3.13.0.tar.bz2
+RUN cd valgrind-3.13.0 && ./configure && make && make install 
 
 COPY supervisord.conf /etc/
+RUN echo alias si=\'sinfo -o \"%20P %5D %14F %8z %10m %10d %11l %16f %N\"\' >> ~/.bashrc \
+	&& echo alias si2=\'sinfo -o \"%20P %5D %6t %8z %10m %10d %11l %16f %N\"\' >> ~/.bashrc \
+	&& echo alias sq=\'squeue -o \"%8i %12j %4t %10u %20q %20a %10g %20P %10Q %5D %11l %11L %R\"\' >> ~/.bashrc \
+	&& echo alias st=\'srun -N5 hostname\' >> ~/.bashrc
+RUN mkdir /etc/slurm/cgroup
+RUN yum -y install python2-pip && pip install --upgrade pip && pip install ctop
 
-# Ganglia Install
-RUN yum install -y ganglia-gmond
-COPY gmond.conf /etc/ganglia/gmond.conf
+COPY cgroup.conf /etc/slurm/cgroup.conf
+COPY slurm.conf /etc/slurm/slurm.conf
+#RUN cgroup_enable=memory swapaccount=1
 
-# TAU install
-RUN mkdir /tau \
-	&& cd /tau \
-	&& wget https://www.cs.uoregon.edu/research/tau/tau_releases/tau-2.26.tar.gz \
-	&& wget https://www.cs.uoregon.edu/research/tau/pdt_releases/pdt-3.24.tar.gz \
-	&& tar -xzvf tau-2.26.tar.gz \
-	&& tar -xzvf pdt-3.24.tar.gz \
-	&& cd pdtoolkit-3.24 && ./configure && make && make install && cd .. \
-	&& cd tau-2.26 \
-	&& ./configure -c++=mpiCC  -cc=mpicc  -pdt=/tau/pdtoolkit-3.24  -mpi  -mpiinc=/usr/local/include  -mpilib=/usr/local/lib  -MPITRACE  -PROFILEPHASE  -PROFILEMEMORY  -PROFILE  -TRACE  -slog2  -openmp  -CPUTIME  -LINUXTIMERS  -iowrapper \
-	&& make && make install && cd .. \
-	&& rm -rf tau-2.26.tar.gz pdt-3.24.tar.gz
-ENV PATH /tau/tau-2.26/x86_64/bin:$PATH
-ENV TAU_MAKEFILE /tau/tau-2.26/x86_64/lib/Makefile.tau-memory-phase-mpi-pdt-openmp-profile-trace-mpitrace
+#RUN yum -y install mesa-\*
 
-# Other utils
-RUN yum -y install net-tools nano
-# RUN yum -y install mesa-\*
-RUN yum -y install ocl-icd-devel java
+
+#ENTRYPOINT /usr/bin/supervisord -c /etc/supervisord.conf && /bin/bash

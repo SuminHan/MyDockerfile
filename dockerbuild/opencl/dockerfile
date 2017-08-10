@@ -1,12 +1,14 @@
-FROM ubuntu:14.04
+FROM centos:7
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
  
 LABEL com.nvidia.volumes.needed="nvidia_driver"
  
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        ocl-icd-libopencl1 \
-        clinfo && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y --no-install-recommends \
+#        ocl-icd-libopencl1 \
+#        clinfo && \
+#    rm -rf /var/lib/apt/lists/*
+
+RUN yum -y update && yum install -y epel-release ocl-icd clinfo 
  
 RUN mkdir -p /etc/OpenCL/vendors && \
     echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
@@ -14,5 +16,16 @@ RUN mkdir -p /etc/OpenCL/vendors && \
 RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
     echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
  
-ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV PATH /usr/local/nvidia/bin:/usr/lib64/openmpi/bin/:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
+RUN yum -y install which tar perl gcc gcc-c++ make
+RUN yum -y install wget
+RUN wget https://www.open-mpi.org/software/ompi/v2.1/downloads/openmpi-2.1.1.tar.gz
+RUN gunzip -c openmpi-2.1.1.tar.gz | tar xf - \
+	&& cd openmpi-2.1.1 \
+	&& ./configure --prefix=/usr/local \
+	&& make all install
+RUN rm -rf openmpi-2.1.1.tar.gz openmpi-2.1.1
+
+RUN yum install -y openssh-clients
