@@ -17,33 +17,33 @@
 13 TAUEVENT 0 "[GROUP=MIN_MARKER] Message size for reduce : int main(int, char **) C [{test.c} {20,1}-{65,1}]   => MPI_Reduce()  " TriggerValue
 15 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
 16 TAUEVENT 0 "CPU Cores | 4" TriggerValue
-17 TAUEVENT 0 "CPU MHz | 2303.765" TriggerValue
+17 TAUEVENT 0 "CPU MHz | 2818.945" TriggerValue
 18 TAUEVENT 0 "CPU Type | Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz" TriggerValue
 19 TAUEVENT 0 "CPU Vendor | GenuineIntel" TriggerValue
 20 TAUEVENT 0 "CWD | /dockerdata/examples/smpi" TriggerValue
 21 TAUEVENT 0 "Cache Size | 8192 KB" TriggerValue
 22 TAUEVENT 0 "Command Line | a.out" TriggerValue
 23 TAUEVENT 0 "Executable | /dockerdata/examples/smpi/a.out" TriggerValue
-24 TAUEVENT 0 "Hostname | n5" TriggerValue
-25 TAUEVENT 0 "Local Time | 2017-08-08T00:13:20+00:00" TriggerValue
-26 TAUEVENT 0 "MPI Processor Name | n5" TriggerValue
+24 TAUEVENT 0 "Hostname | n1" TriggerValue
+25 TAUEVENT 0 "Local Time | 2017-08-10T06:10:32+00:00" TriggerValue
+26 TAUEVENT 0 "MPI Processor Name | n1" TriggerValue
 27 TAUEVENT 0 "Memory Size | 7971896 kB" TriggerValue
-28 TAUEVENT 0 "Node Name | n5" TriggerValue
+28 TAUEVENT 0 "Node Name | n1" TriggerValue
 29 TAUEVENT 0 "OMP_CHUNK_SIZE | 1" TriggerValue
 30 TAUEVENT 0 "OMP_DYNAMIC | off" TriggerValue
-31 TAUEVENT 0 "OMP_MAX_THREADS | 2" TriggerValue
+31 TAUEVENT 0 "OMP_MAX_THREADS | 1" TriggerValue
 32 TAUEVENT 0 "OMP_NESTED | off" TriggerValue
-33 TAUEVENT 0 "OMP_NUM_PROCS | 2" TriggerValue
+33 TAUEVENT 0 "OMP_NUM_PROCS | 1" TriggerValue
 34 TAUEVENT 0 "OMP_SCHEDULE | UNKNOWN" TriggerValue
 35 TAUEVENT 0 "OS Machine | x86_64" TriggerValue
 36 TAUEVENT 0 "OS Name | Linux" TriggerValue
 37 TAUEVENT 0 "OS Release | 3.10.0-514.21.2.el7.x86_64" TriggerValue
 38 TAUEVENT 0 "OS Version | #1 SMP Tue Jun 20 12:24:47 UTC 2017" TriggerValue
-39 TAUEVENT 0 "Starting Timestamp | 1502151200680934" TriggerValue
+39 TAUEVENT 0 "Starting Timestamp | 1502345432813342" TriggerValue
 40 TAUEVENT 0 "TAU Architecture | default" TriggerValue
 41 TAUEVENT 0 "TAU Config |  -c++=mpiCC -cc=mpicc -mpi -MPITRACE -slog2 -PROFILE -TRACE -openmp -pdt=/root/tau_install/pdtoolkit-3.24 -mpiinc=/usr/local/include -mpilib=/usr/local/lib -opencl=/usr/" TriggerValue
 42 TAUEVENT 0 "TAU Makefile | /root/tau_install/tau-2.26.2p1/x86_64/lib/Makefile.tau-mpi-pdt-openmp-profile-trace-mpitrace" TriggerValue
-43 TAUEVENT 0 "TAU MetaData Merge Time | 2.7E-05 seconds" TriggerValue
+43 TAUEVENT 0 "TAU MetaData Merge Time | 8.3E-05 seconds" TriggerValue
 44 TAUEVENT 0 "TAU Version | 2.26.2p1" TriggerValue
 45 TAUEVENT 0 "TAU_BFD_LOOKUP | on" TriggerValue
 46 TAUEVENT 0 "TAU_CALLPATH_DEPTH | 2" TriggerValue
@@ -85,10 +85,10 @@
 82 TAUEVENT 0 "TAU_TRACK_MESSAGE | on" TriggerValue
 83 TAUEVENT 0 "TAU_TRACK_SIGNALS | off" TriggerValue
 84 TAUEVENT 0 "TAU_TRACK_UNIFIED_MEMORY | off" TriggerValue
-85 TAUEVENT 0 "Timestamp | 1502151200681040" TriggerValue
-86 TAUEVENT 0 "UTC Time | 2017-08-08T00:13:20Z" TriggerValue
-87 TAUEVENT 0 "pid | 338" TriggerValue
-88 TAUEVENT 0 "tid | 338" TriggerValue
+85 TAUEVENT 0 "Timestamp | 1502345432813390" TriggerValue
+86 TAUEVENT 0 "UTC Time | 2017-08-10T06:10:32Z" TriggerValue
+87 TAUEVENT 0 "pid | 2281" TriggerValue
+88 TAUEVENT 0 "tid | 2281" TriggerValue
 60000 TRACER 0 "EV_INIT" none
 60001 TRACER 0 "FLUSH" EntryExit
 60003 TRACER 0 "FLUSH_CLOSE" none

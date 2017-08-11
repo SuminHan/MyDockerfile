@@ -16,10 +16,10 @@
 12 TAUEVENT 0 "[GROUP=MIN_MARKER] Message size for reduce" TriggerValue
 13 TAUEVENT 0 "[GROUP=MIN_MARKER] Message size for reduce : int main(int, char **) C [{test.c} {20,1}-{65,1}]   => MPI_Reduce()  " TriggerValue
 15 TAUEVENT 0 "TauTraceClockOffsetEnd" TriggerValue
-16 TAUEVENT 0 "Starting Timestamp | 1501033732873174" TriggerValue
-17 TAUEVENT 0 "Timestamp | 1501033732873297" TriggerValue
-18 TAUEVENT 0 "pid | 22284" TriggerValue
-19 TAUEVENT 0 "tid | 22284" TriggerValue
+16 TAUEVENT 0 "Starting Timestamp | 1502345432809592" TriggerValue
+17 TAUEVENT 0 "Timestamp | 1502345432809637" TriggerValue
+18 TAUEVENT 0 "pid | 2282" TriggerValue
+19 TAUEVENT 0 "tid | 2282" TriggerValue
 60000 TRACER 0 "EV_INIT" none
 60001 TRACER 0 "FLUSH" EntryExit
 60003 TRACER 0 "FLUSH_CLOSE" none

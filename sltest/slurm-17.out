@@ -1,0 +1,3 @@
+stress: info: [1652] dispatching hogs: 8 cpu, 1 io, 1 vm, 0 hdd
+stress: info: [1652] successful run completed in 10s
+n1
